@@ -9,10 +9,13 @@ pipeline {
     }
     stages {
         stage('Deploy') {
+        
             input {
                 message "Should we continue?"
                 ok "Yes, we should."
-        }     
+            }            
+        }
+
         stage('Init') {
             steps {
                sh """
