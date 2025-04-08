@@ -11,7 +11,7 @@ pipeline {
     parameters {
          choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
     }
-        
+
     stages {
         stage('Init') {
             steps {
@@ -27,6 +27,19 @@ pipeline {
                 sh 'echo This is Test'
             }
         }
+        stage('Deploy') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+            }            
+            steps {
+               sh """
+                 cd 01-vpc
+                 terraform apply -auto-approve
+               """
+            }
+        }
+
     }
     post { 
         always { 
