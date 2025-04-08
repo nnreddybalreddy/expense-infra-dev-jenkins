@@ -8,6 +8,11 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
+        stage('Deploy') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+        }     
         stage('Init') {
             steps {
                sh """
@@ -20,11 +25,6 @@ pipeline {
         stage('Plan') {
             steps {
                 sh 'echo This is Test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo This is Deploy'
             }
         }
     }
