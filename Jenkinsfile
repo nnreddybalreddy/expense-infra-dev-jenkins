@@ -7,15 +7,12 @@ pipeline {
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
-    stages {
-        stage('Deploy') {
-        
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-            }            
-        }
 
+    parameters {
+         choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
+    }
+        
+    stages {
         stage('Init') {
             steps {
                sh """
