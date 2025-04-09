@@ -6,6 +6,9 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
+    parameters {
+         choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
+    }    
     stages {
         stage('Init') {
             steps {
