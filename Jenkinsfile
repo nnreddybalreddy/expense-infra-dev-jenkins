@@ -7,7 +7,6 @@ pipeline {
         disableConcurrentBuilds()
     }
     stages {
-stages {
         stage('Init') {
             steps {
                sh """
@@ -63,10 +62,7 @@ stages {
         }
     }
 
-    }
 
-
-    }
     post { 
         always { 
             echo 'I will always say Hello again!'
