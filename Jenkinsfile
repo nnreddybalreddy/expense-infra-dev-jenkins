@@ -5,14 +5,13 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
-        ansiColor('xterm')        
+        ansiColor('Xterm')        
     }
     parameters {
          choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
     }    
 
-    stages {
-
+stages {
         stage('Init') {
             steps {
                sh """
@@ -66,6 +65,8 @@ pipeline {
                 """
             }
         }
+    }
+
 
     post { 
         always { 
